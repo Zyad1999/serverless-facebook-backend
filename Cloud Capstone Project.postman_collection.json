@@ -1,0 +1,635 @@
+{
+	"info": {
+		"_postman_id": "7c4cf090-f54c-4830-a35a-a2fd8f6c336c",
+		"name": "Cloud Capstone Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User 1 POSTS",
+			"item": [
+				{
+					"name": "Get all public posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/33d79ca2-dc73-4da4-af97-ab32c0a61df2",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"33d79ca2-dc73-4da4-af97-ab32c0a61df2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user 1 all posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/users/109752506206404478742",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"users",
+								"109752506206404478742"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user 2 public posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/users/116726268983076826824",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"users",
+								"116726268983076826824"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"try post 8\",\n\t\"privacy\": \"private\"\n}"
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"hello world\",\n\t\"privacy\": \"public\"\n}"
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/33d79ca2-dc73-4da4-af97-ab32c0a61df2",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"33d79ca2-dc73-4da4-af97-ab32c0a61df2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/c42859ca-e8c0-435d-b52a-7c38b10e480f",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"c42859ca-e8c0-435d-b52a-7c38b10e480f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add post attachment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/8ef2b26f-d713-4464-9022-45503c4f2afe/attachment",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"8ef2b26f-d713-4464-9022-45503c4f2afe",
+								"attachment"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User 2 POSTS",
+			"item": [
+				{
+					"name": "Get all public posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken2}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken2}}"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/80211f3b-b949-4d22-a937-fa4a1413c47f",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"80211f3b-b949-4d22-a937-fa4a1413c47f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user 2 all posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken2}}"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/users/116726268983076826824",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"users",
+								"116726268983076826824"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user 1 public posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken2}}"
+							}
+						],
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/users/109752506206404478742",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"users",
+								"109752506206404478742"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken2}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"try post 6\",\n\t\"privacy\": \"private\"\n}"
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken2}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"hello world\",\n\t\"privacy\": \"public\"\n}"
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/339d8094-27ec-4d60-90c1-4c681431b716",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"339d8094-27ec-4d60-90c1-4c681431b716"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken2}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/80211f3b-b949-4d22-a937-fa4a1413c47f",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"80211f3b-b949-4d22-a937-fa4a1413c47f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add post attachment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken2}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://yr9d4cngi1.execute-api.us-east-2.amazonaws.com/dev/posts/3836b777-9bc4-4429-9b79-ba4e4f5f91c0/attachment",
+							"protocol": "https",
+							"host": [
+								"yr9d4cngi1",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"posts",
+								"3836b777-9bc4-4429-9b79-ba4e4f5f91c0",
+								"attachment"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": ""
+		},
+		{
+			"key": "authToken2",
+			"value": ""
+		}
+	]
+}

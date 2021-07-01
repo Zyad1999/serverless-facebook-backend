@@ -1,0 +1,54 @@
+Readme Start
+
+For my Capstone project i decided to go with the serverless option and make an API for a facebook clone application this API allow authenticated user to: 
+	1-Post new posts and make it public or private.
+	2-Add a photo to a post.
+	3-Edit text of a post or the privacy of a post.
+	4-Delete a post.
+	5-Get all public posts of other users.
+	6-Get all his posts public and private.
+	7-Get other user's public posts.
+
+My api has 8 functions and they are:
+
+	1-Authentication function that authenticates users using auth0.
+
+	2-GetPosts (GET /posts) which allows an authenticated user to see all public posts on the application.
+
+	3-GetPost (GET /posts/postId) which allows an authenticated user to get a post that belong to him with postId.
+
+	4-GetUserPosts (GET /users/userId) which allows an authenticated user to either all of his posts if the request is to 
+	his userId or other user's public posts if the request is to another user`s userId.
+
+	5-CreatPost (POST /posts) which allows an authenticated user to create a new post with privacy option.
+
+	6-UpdatePost (PATCH /posts/postId) which allows an authenticated user to update the text or privacy of a post that he have.
+
+	7-DeletePost (DELETE /posts/postId) which allows an authenticated user to  delete a post that he have.
+
+	8-GenerateUploadUrl (POST posts/postId/attachment) which adds an attachment url to a post and returns upload url from S3 to upload the image on.
+
+Notes:
+
+	The API also implements request validation through serverless-req-validator-plugin and schemas for create post and update post are used.
+
+	To be able to use query to get all public posts from the table I used a global secondary index with privacy as its partition key and postId as its sort key to make each item unique.
+
+	To be able to use query to get a user's public or private data i used another global secondary index with custom field "userIdPrivacy" as the partition key
+	so that i can query with two unquniqe parameters from the table and used postId as sort key to make each item unique.
+
+	For the main table i used userId and todoId to be able to do delete,patchand get on a single item with parameters available in the request.
+
+	Note that to make the endpoint (GET /users/userId) i could not store and use the userId stored in auth0 token because it had special characters that made
+	the request to this endpoint returns a bad request so I made the function that gets the userId from the token return only the unique user number from the id to store it and use it.
+	
+Testing:
+	To test the API i included a postman collection with 2 tokens for 2 users to be able to test the functionality of privacy in each user i made requests to 
+	create new posts, delete a post, get a single post of that user, get all public posts, get all of his posts, get the other included user`s public posts
+	update one of his posts and add attachment to one of his posts which are all the 8 possible tests.
+	
+Tokens:
+1- eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlhiYlV6X29CZ0tfcWJqbmdNNUs2ZCJ9.eyJpc3MiOiJodHRwczovL2Rldi02aWNyMWQwMC51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDk3NTI1MDYyMDY0MDQ0Nzg3NDIiLCJhdWQiOiI5YkEwSzZBcW5uNlRObzYweXpQanF4OEh2ek9DMlhQRCIsImlhdCI6MTYyMTIwNTI4MiwiZXhwIjoxNjIxNjM3MjgyLCJhdF9oYXNoIjoiUVVWVHJSWW1lb3YxVjM5WUhkU3VKdyIsIm5vbmNlIjoiS3R1YkFYdFNEaGZhQUFmb1plLklUcWdIS3NuN3h4ZlAifQ.k8oKTrNWKpKKKeu9wrLGgvoi-2UbeUxuMDvvjumF3cs_DX27Le8TQ_Dvmnak1Cw-4ga_tP1D2YFqRVvqw74PSGAwfaxKowJfAl7p9dI6HVgowy76Fm5aVqFsdTpYd6oUA71r8THNkbyh_LErbWUBbTyUhyaICM6EjPgoGAdjMJC3RJuz_qKhs_ExfQePVcwbL3hqKcUAH6aQ86-sir58qEFr1YxZyeoLn6fQibvpkoy3-aBoLSnCAJ_YnCfbyeOCIA98NqQRpTdYFE90kPxfL_74vFdRonafd8QsFSgXAMOysDJiMxlcR2wXZwTQbeN0S1TAdWBT-05PMkARTSTgcw
+
+2-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlhiYlV6X29CZ0tfcWJqbmdNNUs2ZCJ9.eyJpc3MiOiJodHRwczovL2Rldi02aWNyMWQwMC51cy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTY3MjYyNjg5ODMwNzY4MjY4MjQiLCJhdWQiOiI5YkEwSzZBcW5uNlRObzYweXpQanF4OEh2ek9DMlhQRCIsImlhdCI6MTYyMTIwNTMyOSwiZXhwIjoxNjIxNjM3MzI5LCJhdF9oYXNoIjoiWTBQYUVCVmZRWVE0Zjl5MkVCdm41QSIsIm5vbmNlIjoiT1Ruazd3RFljd0F2TDE5cElrQ3N6YlViYXdfTWZ1Z1UifQ.iQBMAzdJbFNWjLarCKI2hE-my3iyhLgMZWd4_pnfpq9vt32Nae_ozUL8znLBLeVih7tzOofjCUwOnp6pfwvfGLJZF5KkjR-n5jSULR-AbuoPXvvNsI9dWwRtptKnLoOlFn0xKLArtIUiCda2qcVKaPZCxCN2Bin-Gto2u5w-DqGAyUOnAv13NDz943GI-RPsMnOpf_XnwNn7cQvxLAOwl-izkfmgtIS__mLjl1J31kCRaUuGo-ePp5VZJH68Hn0wLuLHqlLh_guCtOWMq_pmrSLbbb9PnJb5e-eclVjLy9X5opujjYVxTUhckO5whxOzLqe3k-Pe8KBn_ZF7jk92LQ
+

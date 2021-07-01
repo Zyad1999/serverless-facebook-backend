@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "post",
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string"
+      },
+      "privacy": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "text",
+      "privacy"
+    ]
+  }
+  
