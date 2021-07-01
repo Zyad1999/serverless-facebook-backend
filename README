@@ -1,6 +1,6 @@
 Readme Start
 
-For my Capstone project i decided to go with the serverless option and make an API for a facebook clone application this API allow authenticated user to: 
+This is serverless API for a facebook clone application this API allow authenticated user to: 
 	1-Post new posts and make it public or private.
 	2-Add a photo to a post.
 	3-Edit text of a post or the privacy of a post.
